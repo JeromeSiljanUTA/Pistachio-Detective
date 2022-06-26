@@ -1,9 +1,9 @@
 # Pistachio Detective
 I am learning Tensorflow so I thought an interesting application of my efforts would be to go online, find a data set, and do some basic image classification. 
 
-### Kirmizi Pistachi: ![Kirmizi](.README_images/kirmizi_example.png)
+### Kirmizi Pistachi: ![Kirmizi](.README_images/kirmizi_example.jpg)
 
-### Siirt Pistachi: ![Siirt](.README_images/siirt_example.png)
+### Siirt Pistachi: ![Siirt](.README_images/siirt_example.jpg)
 
 I can't really tell the difference by eye, but the Neural Network did great!
 
