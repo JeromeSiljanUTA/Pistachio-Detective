@@ -14,3 +14,7 @@ I can't really tell the difference by eye, but the Neural Network did great!
 
 ### Callback Function at Work
 ![Callback](.README_images/callback.png)
+
+## Data Set Used
+I used the data set on the first link:
+[https://www.muratkoklu.com/datasets/](Pistachio Data Set)
