@@ -1,9 +1,9 @@
 # Pistachio Detective
 I am learning Tensorflow so I thought an interesting application of my efforts would be to go online, find a data set, and do some basic image classification. 
 
-### Kirmizi Pistachi: ![Kirmizi](kirmizi_example.png)
+### Kirmizi Pistachi: ![Kirmizi](.README_images/kirmizi_example.png)
 
-### Siirt Pistachi: ![Siirt](siirt_example.png)
+### Siirt Pistachi: ![Siirt](.README_images/siirt_example.png)
 
 I can't really tell the difference by eye, but the Neural Network did great!
 
@@ -13,4 +13,4 @@ I can't really tell the difference by eye, but the Neural Network did great!
 3. Achieve reasonable accuracy. I honestly thought 90% would be more than enough, but with only 3 epochs, the CNN was able to reach 99%. That was a great experience for me because it encouraged me about the practical applications of Machine Learning.
 
 ### Callback Function at Work
-![Callback](callback.png)
+![Callback](.README_images/callback.png)
