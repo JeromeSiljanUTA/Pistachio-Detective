@@ -7,6 +7,8 @@ I am learning Tensorflow so I thought an interesting application of my efforts w
 
 I can't really tell the difference by eye, but the Neural Network did great!
 
+**EDIT"** Turns out that was a lie: I was measuring the accuracy of my training data, not my validation data. For that, I only got an accuracy of ~79%. I realize that the model is overfitting, so my next step is finding a solution for this issue.
+
 ## Technical Objectives
 1. Make use of a Convolutional Neural Network. This is one of the requirements for the Tensorflow certification, but I'm generally interested in images and ML, so I thought it'd be worth practicing. 
 2. Implementing a callback function to control epochs. I really don't want to overfit data, and callbacks seem to be a great way to do this. Along the way, I learned more about how `model.fit()` works.
