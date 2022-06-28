@@ -4,8 +4,10 @@ from tensorflow.keras import layers
 
 class CustomCallback(keras.callbacks.Callback):     # inherits from the keras class
     def on_epoch_end(self, epoch, logs=None):
-        #print(logs.keys())                          # has information such as accuracy, loss, etc.
-        if logs.get('accuracy') > 0.98:
+        print('')
+        print(logs.keys())                          # has information such as accuracy, loss, etc.
+        print('')
+        if logs.get('val_accuracy') > 0.98:
             self.model.stop_training = True
 
 img_height = 600
@@ -63,5 +65,6 @@ model.compile(
 model.fit(
     data_training,
     epochs = 15,
+    validation_data = data_validation,
     callbacks=[save_callback, CustomCallback()],
 )
