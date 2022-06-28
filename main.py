@@ -20,11 +20,15 @@ model = keras.Sequential([
     layers.MaxPooling2D(),
     layers.Conv2D(64, 3, activation='relu'),
     layers.Flatten(),
+    layers.Conv2D(64, 3, activation='relu'),
+    layers.Flatten(),
+    layers.Dense(50, activation='softmax')
+    layers.Dropouts(0.25)
     layers.Dense(10, activation='softmax')
 ])
 
 data_training = tf.keras.preprocessing.image_dataset_from_directory(
-    '/home/jerome/projects/pistachio_detective/images/',
+    'images/',
     labels='inferred',
     label_mode = 'binary',
     color_mode = 'rgb', 
@@ -37,7 +41,7 @@ data_training = tf.keras.preprocessing.image_dataset_from_directory(
 )
 
 data_validation = tf.keras.preprocessing.image_dataset_from_directory(
-    '/home/jerome/projects/pistachio_detective/images/',
+    'images/',
     labels='inferred',
     label_mode = 'binary',
     color_mode = 'rgb', 
