@@ -10,10 +10,6 @@ class CustomCallback(keras.callbacks.Callback):     # inherits from the keras cl
         if logs.get('val_accuracy') > 0.98:
             self.model.stop_training = True
 
-img_height = 600
-img_width = 600
-batch_size = 20         # really doesn't matter much
-
 model = keras.Sequential([
     layers.Input((img_height, img_width, 3)),       # using color so last value is 3 (rgb)
     layers.Conv2D(64, 3, activation='relu'),
@@ -27,48 +23,44 @@ model = keras.Sequential([
     layers.Dense(10, activation='softmax')
 ])
 
-data_training = tf.keras.preprocessing.image_dataset_from_directory(
-    'images/',
-    labels='inferred',
-    label_mode = 'binary',
-    color_mode = 'rgb', 
-    batch_size = batch_size,
-    image_size = (img_height, img_width),
-    shuffle = True,
-    seed = 73,
-    validation_split=0.1,
-    subset = 'training',
+train_ds = ImageDataGenerator(
+    validation_split=0.1, 
+    rescale=1/255,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True,
+    validation_split=0.2,
+    subset='training',
 )
 
-data_validation = tf.keras.preprocessing.image_dataset_from_directory(
-    'images/',
-    labels='inferred',
-    label_mode = 'binary',
-    color_mode = 'rgb', 
-    batch_size = batch_size,
-    image_size = (img_height, img_width),
-    shuffle = True,
-    seed = 73,
-    validation_split=0.1,
-    subset = 'validation',
+val_ds = ImageDataGenerator(
+    validation_split=0.1, 
+    rescale=1/255,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True,
+    validation_split=0.2,
+    subset='validation',
 )
 
-save_callback = keras.callbacks.ModelCheckpoint(
-    'checkpoint/',              # where models are saved
-    save_weights_only=True,     # saving weights instead of full model
-    monitor='accuracy',
-    save_best_only=False,       # save every epoch
-)
+train_generator = train_datagen.flow_from_directory(
+    'images/',  
+    target_size=(600, 600),  
+    batch_size=50,
+    class_mode='binary',
+    subset='training')
 
 model.compile(
     optimizer = tf.optimizers.Adam(), 
-    loss = 'sparse_categorical_crossentropy', 
+    loss = 'binary_crossentropy', 
     metrics=['accuracy'],
 )
 
 model.fit(
-    data_training,
+    train_generator,
     epochs = 15,
-    validation_data = data_validation,
-    callbacks=[save_callback, CustomCallback()],
+    validation_data = val_ds,
+    callbacks=[CustomCallback()],
 )
