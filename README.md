@@ -10,7 +10,7 @@ I am learning Tensorflow so I thought an interesting application of my efforts w
 2. I realized that I was measuring accuracy on the test set, but not on the validation set. I updated the code and only got up to 80% accuracy. 
 3. I added some more layers for convolutions and pooling in an attempt to avoid  overfitting, but only got to about 85% accuracy on the validation set whereas the training set was seeing almost 100% accuracy. 
 4. The new strategy is to use `ImageDataGenerator` to augment the images. If needed, I'll make use of dropouts.
-5. A custom callback function was added to prevent overtraining.
+5. A custom callback function was added to prevent overfitting.
 
 ## Technical Objectives
 1. Make use of a Convolutional Neural Network. This is one of the requirements for the Tensorflow certification, but I'm generally interested in images and ML, so I thought it'd be worth practicing. 
